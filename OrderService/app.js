@@ -1,29 +1,31 @@
 const express = require ('express');
 const {randomBytes} = require ('crypto');
-const bodyParser = require('body-parser')
+const bodyParser = require ('body-parser');
 const app = express ();
-app.use(bodyParser.json())
-const ordersByProductId = {};
+const cors = require ('cors');
+app.use (cors ());
+app.use (bodyParser.json ());
+const orders = {};
 
-app.get ('/orders/:id/products', (req, res) => {
-  res.send (products);
+app.get ('/orders/', (req, res) => {
+  res.send (orders);
 });
 
-app.post ('/orders/:id/products', (req, res) => {
-  const product = {
-    productName: req.body.productName,
-    productPrice: req.body.productPrice,
-    productDescription: req.body.productDescription,
+app.post ('/orders/', (req, res) => {
+  const order = {
+    orderDate: new Date ().toISOString (),
+    products: [],
   };
 
   const id = randomBytes (4).toString ('hex');
-  products[id] = {
+  orders[id] = {
     id,
-    product,
+    order,
   };
 
-  res.status (201).send (products[id]);
+  res.status (201).send (orders[id]);
 });
+
 
 app.listen (4001, () => {
   console.log ('Order Service running on port 4001');
