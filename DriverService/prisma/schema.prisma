@@ -1,0 +1,30 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Driver {
+  DriverId       Int           @id @default(autoincrement())
+  DriverName     String?
+  DriverDOB      String?
+  DriverEmail    String?
+  DriverPhone    String?
+  DriverLocation String?
+  DriverLat      Float?
+  DriverLng      Float?
+  DriverOrders   DriverOrder[]
+}
+
+model DriverOrder {
+  DriverOrderId Int     @id @default(autoincrement())
+  DriverId      Int?
+  OrderId Int?
+  Driver        Driver? @relation(fields: [DriverId], references: [DriverId])
+}
