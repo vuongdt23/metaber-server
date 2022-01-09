@@ -7,6 +7,9 @@ const {default: axios} = require ('axios');
 app.use (cors ());
 app.use (bodyParser.json ());
 
+const eventRouter = require ('./Routes/eventRouter');
+app.use ('/events/', eventRouter);
 app.listen (4002, () => {
+  
   console.log ('order service running on port 4002');
 });

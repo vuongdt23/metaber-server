@@ -5,7 +5,8 @@ const cors = require ('cors');
 app.use (cors ());
 app.use (bodyParser.json ());
 
-
-app.listen(4003, ()=>{
-    console.log("Driver service running on port 4003")
-})
+const eventRouter = require ('./Routes/eventRouter');
+app.use ('/events/', eventRouter);
+app.listen (4003, () => {
+  console.log ('Driver service running on port 4003');
+});
