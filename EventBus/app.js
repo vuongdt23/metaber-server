@@ -10,6 +10,8 @@ app.use (bodyParser.json ());
 const portList = {
   orderPort: 4001,
   productPort: 4002,
+  driverPort: 4003,
+  userPort: 4004,
 };
 
 app.post ('/events', (req, res) => {

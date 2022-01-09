@@ -1,12 +1,10 @@
 const express = require ('express');
-const {randomBytes} = require ('crypto');
 const bodyParser = require ('body-parser');
 const app = express ();
 const cors = require ('cors');
-const {default: axios} = require ('axios');
 app.use (cors ());
 app.use (bodyParser.json ());
 
-app.listen (4002, () => {
-  console.log ('order service running on port 4002');
+app.listen (4004, () => {
+  console.log ('User service running on port 4003');
 });

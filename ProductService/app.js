@@ -46,6 +46,6 @@ app.post ('/orders/:id/products/', (req, res) => {
   res.status (201).send (productsByOrderId);
 });
 
-app.listen (4005, () => {
+app.listen (4002, () => {
   console.log ('Product Service running on port 4002');
 });
